@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FootOne</title>
+    <script type="importmap"></script>
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FeatureJuan.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/uikit/css/uikit.min.css" />
+    <script src="~/lib/uikit/js/uikit.min.js"></script>
+    <script src="~/lib/uikit/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav >
+            <div class="uk-flex uk-flex-between uk-flex-middle color-backgroud-header">
+                <a asp-area="" asp-controller="Home" asp-action="Index"> 
+                    <img class="uk-margin-left" src="~/images/football.svg" alt="img-FootOne">
+                </a> 
+                <p class="uk-margin-right color-background-name">Oi, José Ribeiro</p>    
+            </div>
+        </nav>
+    </header>
+    <div class="container uk-background-muted" style="min-height: calc(100vh - 120px);">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="uk-flex uk-flex-middle ">
+            <span class="uk-margin-left">Contato</span>
+            <img class="uk-margin-left" src="~/images/barra.svg" alt="">   
+            <div class="uk-flex uk-flex-column uk-margin-left">
+                <span class="color-contact uk-text-bold">(11) 1111-1111</span>
+                <span class="color-contact ">sac@footOne.com.br</span>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
