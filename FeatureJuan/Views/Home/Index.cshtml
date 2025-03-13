@@ -1,4 +1,6 @@
-﻿@{
+﻿
+@model IEnumerable<Equipe>
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -11,21 +13,78 @@
    <hr class="">
    <div class="uk-flex uk-flex-center">
         <div class="container-teams">
-            <div class="info">
-                <span>Informações do time</span>
-                <hr>
+            <div class="info uk-margin-top">
+                <span class="uk-text-bold uk-margin-left">Informações do time</span>
             </div>
+                <hr>
             <div class="uk-flex uk-flex-column" style="gap: 46px;">
                 <div class="uk-flex uk-flex-center" style="gap: 10px;">
-                    <input class="uk-input uk-form-width-medium uk-form-small" type="text" placeholder="Small" aria-label="Small">
-                    <input class="uk-input uk-form-width-medium uk-form-small" type="text" placeholder="Small" aria-label="Small">
-                    <input class="uk-input uk-form-width-medium uk-form-small" type="text" placeholder="Small" aria-label="Small">
+                    <input class="uk-input uk-form-width-medium uk-form-small" type="text" placeholder="Time" aria-label="Small">
+                    <input class="uk-input uk-form-width-medium uk-form-small" type="text" placeholder="Quantidade de integrantes" aria-label="Small">
+                    <select class="uk-select uk-form-width-medium uk-form-small" aria-label="Select">
+                <option disabled selected  >Divisão Atual</option>
+                 @if (ViewBag.Divisoes != null) {
+                            foreach (var divisao in ViewBag.Divisoes) {
+                                <option>@divisao.Nome</option>  
+                            }
+                        }
+            </select>
                 </div>
                 <div class="uk-flex uk-flex-right uk-margin-large-right " style="gap: 10px;">
-                    <button class=" padrao-botao uk-button-small">+ ADICIONAR TIME</button>
+                     <a href='@Url.Action("CadastrarTime", "Home")'>
+                        <button class=" padrao-botao uk-button-small">+ ADICIONAR TIME</button>
+                     </a>
                     <button class=" padrao-botao uk-button-small">BUSCAR</button>
                 </div>
             </div>
+            <table class="padrao-tabela uk-table uk-table-small uk-table-divider">
+                <thead>
+                    <tr>
+                        <th class="uk-text-center">Time</th>
+                        <th class="uk-text-center">Qtd. Integrantes</th>
+                        <th class="uk-text-center">Divisão Atual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     @if (@Model != null && @Model.Any()) {
+                        foreach (var equipe in @Model) {
+                            <tr class="uk-text-center">
+                                <td>@equipe.Nome</td>
+                                <td>@equipe.QuantidadeIntegrantes</td>
+                                <td>@equipe.Divisao.Nome</td>
+                                <td>
+                                    <button class="btn-tabela-padrao">
+                                        Editar
+                                    </button>
+                                </td>
+                                <td>
+                                    <a class="uk-button uk-button-default" href="#modal-sections-@equipe.EquipeId" uk-toggle>Excluir</a>
+                                    <div id="modal-sections-@equipe.EquipeId" uk-modal>
+                                        <div class="uk-modal-dialog  uk-margin-auto-vertical">
+                                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                                            <div class="uk-modal-header uk-padding-small" style="height: 44px;">
+                                                <h2 class="uk-modal-title uk-text-center ">Excluir</h2>
+                                            </div>
+                                            <div class="uk-modal-body uk-flex uk-flex-column uk-text-center uk-padding-small">
+                                                <span>Você irá excluir permanentemente o TIME:</span>
+                                                <span class="padrao-nome-time uk-text-bold">@equipe.Nome</span>
+                                                <span>Deseja Continuar?</span>
+                                            </div>
+                                            <div class="uk-text-right uk-text-center uk-padding-small uk-flex uk-flex-center" style="gap: 10px;">
+                                                <button class="uk-button uk-button-default uk-modal-close" type="button">NÃO</button>
+                                                <button class="uk-button uk-button-primary" id="excluirTime" type="button">SIM</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
         </div>
    </div>
 </div>
+<script>
+    
+</script>

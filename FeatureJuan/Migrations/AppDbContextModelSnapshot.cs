@@ -23,8 +23,11 @@ namespace FeatureJuan.Migrations
 
             modelBuilder.Entity("FeatureJuan.Models.Divisao", b =>
                 {
-                    b.Property<string>("DivisaoId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("DivisaoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DivisaoId"));
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -37,45 +40,47 @@ namespace FeatureJuan.Migrations
                     b.HasData(
                         new
                         {
-                            DivisaoId = "1",
+                            DivisaoId = 1,
                             Nome = "Brasileirão Série A"
                         },
                         new
                         {
-                            DivisaoId = "2",
+                            DivisaoId = 2,
                             Nome = "Brasileirão Série B"
                         },
                         new
                         {
-                            DivisaoId = "3",
+                            DivisaoId = 3,
                             Nome = "La Liga"
                         },
                         new
                         {
-                            DivisaoId = "4",
+                            DivisaoId = 4,
                             Nome = "Premier League"
                         },
                         new
                         {
-                            DivisaoId = "5",
+                            DivisaoId = 5,
                             Nome = "Ligue 1"
                         });
                 });
 
             modelBuilder.Entity("FeatureJuan.Models.Equipe", b =>
                 {
-                    b.Property<string>("EquipeId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("EquipeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Property<string>("DivisaoId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EquipeId"));
+
+                    b.Property<int>("DivisaoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("quantidadeIntegrantes")
+                    b.Property<int>("QuantidadeIntegrantes")
                         .HasColumnType("int");
 
                     b.HasKey("EquipeId");
@@ -88,12 +93,17 @@ namespace FeatureJuan.Migrations
             modelBuilder.Entity("FeatureJuan.Models.Equipe", b =>
                 {
                     b.HasOne("FeatureJuan.Models.Divisao", "Divisao")
-                        .WithMany()
+                        .WithMany("Equipes")
                         .HasForeignKey("DivisaoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Divisao");
+                });
+
+            modelBuilder.Entity("FeatureJuan.Models.Divisao", b =>
+                {
+                    b.Navigation("Equipes");
                 });
 #pragma warning restore 612, 618
         }

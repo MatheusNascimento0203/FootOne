@@ -9,9 +9,11 @@ namespace FeatureJuan.Models
     public class Divisao
     {
         [Key]
-        public string DivisaoId { get; set; }
+        public int DivisaoId { get; set; }
 
         public string Nome { get; set; }
+
+        public ICollection<Equipe> Equipes { get; set; }
 
     }
 }

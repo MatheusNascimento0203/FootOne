@@ -7,7 +7,7 @@
 namespace FeatureJuan.Migrations
 {
     /// <inheritdoc />
-    public partial class CriandoBancoFootOne : Migration
+    public partial class create_tables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +16,8 @@ namespace FeatureJuan.Migrations
                 name: "Divisoes",
                 columns: table => new
                 {
-                    DivisaoId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DivisaoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -28,10 +29,11 @@ namespace FeatureJuan.Migrations
                 name: "Equipes",
                 columns: table => new
                 {
-                    EquipeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EquipeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    quantidadeIntegrantes = table.Column<int>(type: "int", nullable: false),
-                    DivisaoId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    QuantidadeIntegrantes = table.Column<int>(type: "int", nullable: false),
+                    DivisaoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,11 +51,11 @@ namespace FeatureJuan.Migrations
                 columns: new[] { "DivisaoId", "Nome" },
                 values: new object[,]
                 {
-                    { "1", "Brasileirão Série A" },
-                    { "2", "Brasileirão Série B" },
-                    { "3", "La Liga" },
-                    { "4", "Premier League" },
-                    { "5", "Ligue 1" }
+                    { 1, "Brasileirão Série A" },
+                    { 2, "Brasileirão Série B" },
+                    { 3, "La Liga" },
+                    { 4, "Premier League" },
+                    { 5, "Ligue 1" }
                 });
 
             migrationBuilder.CreateIndex(

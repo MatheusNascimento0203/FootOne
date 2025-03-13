@@ -18,7 +18,6 @@ C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\FeatureJu
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\scopedcss\bundle\FeatureJuan.styles.css
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\scopedcss\projectbundle\FeatureJuan.bundle.scp.css
-C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\compressed\ecj1rle0gu-b9sayid5wm.gz
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\compressed\22gfh0a3yu-61n19gt1b8.gz
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\compressed\vpeas9511w-xtxxf3hu2r.gz
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\compressed\r6agycuwod-bqjiyaj88i.gz
@@ -229,3 +228,13 @@ C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\compresse
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\compressed\1lrtfe0fqu-mw434w4psg.gz
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\compressed\0j1zr3qd8c-mw434w4psg.gz
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\FeatureJ.8346305A.Up2Date
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\compressed\ecj1rle0gu-y4an4krwy6.gz

@@ -1,0 +1,63 @@
+@{
+    ViewData["Title"] = "Cadastro de Time";
+}
+
+<form>
+  <div class="uk-flex uk-flex-center" style="gap:10px;">
+      <span>FootOne</span>
+      <span>|</span>
+      <span>Cadastrar Times</span>
+  </div>
+  <hr class="">
+  <div class="uk-flex uk-flex-center">
+    <div class="container-teams">
+      <div class="info uk-margin-top">
+         <span class="uk-text-bold uk-margin-left">Informações do time</span>
+      </div>
+      <hr>
+       <div class="uk-flex uk-flex-column" style="gap: 46px;">
+                <div class="uk-flex uk-flex-center" style="gap: 10px;">
+                    <input id="Nome" class="uk-input uk-form-width-medium uk-form-small" type="text" placeholder="Time" aria-label="Small">
+                    <input id="QuantidadeIntegrantes" class="uk-input uk-form-width-medium uk-form-small" type="text" placeholder="Quantidade de integrantes" aria-label="Small">
+                    <select id="DivisaoId" class="uk-select uk-form-width-medium uk-form-small" aria-label="Select">
+                <option value="">Divisão Atual</option>
+                 @if (ViewBag.Divisoes != null) {
+                            foreach (var divisao in ViewBag.Divisoes) {
+                                <option value="@divisao.DivisaoId">@divisao.Nome</option>  
+                            }
+                        }
+            </select>
+                </div>
+                <div class="uk-flex uk-flex-right uk-margin-large-right uk-margin-bottom " style="gap: 10px;">
+                    <button type="submit" class=" botao-cadastro-confirmar uk-button-small uk-text-bold">CONFIRMAR</button>
+                    <button type="button" onclick="history.back()" class=" botao-cadastro-cancelar uk-button-small">CANCELAR</button>
+                </div>
+            </div>
+    </div>
+  </div>
+</form>
+
+<script>
+        $('form').on('submit', function(e) {
+            e.preventDefault();
+
+            var nome = $('#Nome').val();
+            var quantidadeIntegrantes = $('#QuantidadeIntegrantes').val();
+            var divisaoId = $('#DivisaoId').val();
+
+            const obj = {
+                Nome: nome,
+                QuantidadeIntegrantes: quantidadeIntegrantes,
+                DivisaoId: divisaoId
+            }
+
+            $.post('@Url.Action("CadastrarTime", "Home")', obj)
+                .done(function() {
+                    window.UIkit.modal.confirm('UIkit confirm!', {i18n: {ok: 'okay'}}).dialog; // The modal component
+                    window.location.href = '@Url.Action("Index", "Home")';
+                })
+                .fail(function() {
+                    alert('Erro ao cadastrar time!');
+                });
+        });
+</script>
