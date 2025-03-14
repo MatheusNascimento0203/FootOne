@@ -237,4 +237,4 @@ C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
 C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
-C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\compressed\ecj1rle0gu-y4an4krwy6.gz
+C:\Users\SMN - Juan Pablo\Desktop\FootOne\FeatureJuan\obj\Debug\net9.0\compressed\ecj1rle0gu-e9ba6kfoeh.gz

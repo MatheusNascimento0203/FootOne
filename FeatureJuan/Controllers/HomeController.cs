@@ -26,7 +26,7 @@ namespace FeatureJuan.Controllers
             return View(model);
         }
 
-       [HttpGet]
+       [HttpGet("cadastrar")]
         public async Task<IActionResult> CadastrarTimeAsync()
         {
             ViewBag.Divisoes = await _divisaoRepository.GetDivisoes();
@@ -34,17 +34,34 @@ namespace FeatureJuan.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("cadastrar")]
         public async Task<IActionResult> CadastrarTime(Equipe equipe)
         {
        
             await _timeRepository.CreateTime(equipe);
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletarTime(int EquipeId)
+        {
+            await _timeRepository.DeleteTime(EquipeId);
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> DeletarTime(int id)
+        [HttpGet("editar/{EquipeId}")]
+        public async Task<IActionResult> EditarTime(int EquipeId)
         {
-            await _timeRepository.DeleteTime(id);
+            var model = await _timeRepository.GetTimeById(EquipeId);
+            ViewBag.Divisoes = await _divisaoRepository.GetDivisoes();
+            return View("Form", model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditarTime(Equipe equipe)
+        {
+            
+            await _timeRepository.EditarTime(equipe);
             return RedirectToAction(nameof(Index));
         }
 

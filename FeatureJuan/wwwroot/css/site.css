@@ -42,6 +42,14 @@
   color: #113977;
 }
 
-.modal-excluir {
-  background-color: red;
+.botao-excluir {
+  text-decoration: none !important;
+  color: inherit !important;
+  background-color: inherit !important;
+}
+
+.botao-editar {
+  text-decoration: none !important;
+  color: inherit !important;
+  background-color: inherit !important;
 }
