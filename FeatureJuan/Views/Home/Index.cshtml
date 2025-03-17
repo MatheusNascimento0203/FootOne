@@ -37,7 +37,7 @@
                     <a href='@Url.Action("CadastrarTime", "Home")'>
                         <button class=" padrao-botao uk-button-small">+ ADICIONAR TIME</button>
                     </a>
-                    <button class="padrao-botao uk-button-small">BUSCAR</button>
+                    <button id="buscarTime" class="padrao-botao uk-button-small">BUSCAR</button>
                 </div>
             </div>
             <table class="padrao-tabela uk-table uk-table-small uk-table-divider">
@@ -53,10 +53,10 @@
                     {
                         foreach (var equipe in @Model)
                         {
-                            <tr class="uk-text-center">
-                                <td>@equipe.Nome</td>
-                                <td>@equipe.QuantidadeIntegrantes</td>
-                                <td>@equipe.Divisao.Nome</td>
+                            <tr class="uk-text-center buscarEquipe">
+                                <td id="NomeTimeTd">@equipe.Nome</td>
+                                <td id="QuantidadeIntegrantesTd">@equipe.QuantidadeIntegrantes</td>
+                                <td id="DivisaoTd">@equipe.Divisao.Nome</td>
                                 <td>
                                     <a class="botao-editar"
                                         href="@Url.Action("EditarTime", "Home", new { EquipeId = equipe.EquipeId })">
@@ -109,6 +109,36 @@
                 window.location.reload();
             }).fail(function () {
                 alert('Erro ao excluir time!');
+            });
+        });
+    });
+    $(document).ready(function () {
+        $("#buscarTime").click(function () {
+            const nomeInput = $('#Nome').val().trim().toLowerCase();
+            const quantidadeInput = $('#QuantidadeIntegrantes').val().trim().toLowerCase();
+            const divisaoInput = $('#divisao').val()?.trim().toLowerCase() || '';
+
+            if (nomeInput === "" && quantidadeInput === "" && divisaoInput === "") {
+                $('.buscarEquipe').show(); 
+                return;
+            }
+
+            $('.buscarEquipe').each(function () {
+                const tr = $(this);
+
+                const nomeTd = tr.find('#NomeTimeTd').text().trim().toLowerCase();
+                const quantidadeTd = tr.find('#QuantidadeIntegrantesTd').text().trim().toLowerCase();
+                const divisaoTd = tr.find('#DivisaoTd').text().trim().toLowerCase();
+
+                const matchesNome = nomeInput !== "" && nomeTd.includes(nomeInput);
+                const matchesQuantidade = quantidadeInput !== "" && quantidadeTd.includes(quantidadeInput);
+                const matchesDivisao = divisaoInput !== "" && divisaoTd.includes(divisaoInput);
+
+                if (matchesNome || matchesQuantidade || matchesDivisao) {
+                    tr.show();
+                } else {
+                    tr.hide();
+                }
             });
         });
     });

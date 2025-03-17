@@ -57,8 +57,8 @@ namespace FeatureJuan.Controllers
             return View("Form", model);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> EditarTime(Equipe equipe)
+        [HttpPost("editar/{EquipeId}")]
+        public async Task<IActionResult> EditarTime(int EquipeId, Equipe equipe)
         {
             
             await _timeRepository.EditarTime(equipe);
