@@ -23,7 +23,7 @@
                     <input id="QuantidadeIntegrantes" class="uk-input uk-form-width-medium uk-form-small" type="text"
                         placeholder="Quantidade de integrantes" aria-label="Small">
                     <select id="divisao" class="uk-select uk-form-width-medium uk-form-small" aria-label="Select">
-                        <option disabled selected>Divisão Atual</option>
+                        <option selected value="">Divisão Atual</option>
                         @if (ViewBag.Divisoes != null)
                         {
                             foreach (var divisao in ViewBag.Divisoes)
@@ -118,11 +118,6 @@
             const quantidadeInput = $('#QuantidadeIntegrantes').val().trim().toLowerCase();
             const divisaoInput = $('#divisao').val()?.trim().toLowerCase() || '';
 
-            if (nomeInput === "" && quantidadeInput === "" && divisaoInput === "") {
-                $('.buscarEquipe').show(); 
-                return;
-            }
-
             $('.buscarEquipe').each(function () {
                 const tr = $(this);
 
@@ -134,7 +129,10 @@
                 const matchesQuantidade = quantidadeInput !== "" && quantidadeTd.includes(quantidadeInput);
                 const matchesDivisao = divisaoInput !== "" && divisaoTd.includes(divisaoInput);
 
-                if (matchesNome || matchesQuantidade || matchesDivisao) {
+                if (!divisaoInput) {
+                    tr.show();
+                }
+                else if (matchesNome || matchesQuantidade || matchesDivisao) {
                     tr.show();
                 } else {
                     tr.hide();

@@ -21,12 +21,13 @@
             <hr>
             <div class="uk-flex uk-flex-column" style="gap: 46px;">
                 <div class="uk-flex uk-flex-center" style="gap: 10px;">
-                    <input id="Nome" class="uk-input uk-form-width-medium uk-form-small" value="@Model?.Nome"
+                    <input id="Nome" required class="uk-input uk-form-width-medium uk-form-small" value="@Model?.Nome"
                         type="text" placeholder="Time" aria-label="Small">
-                    <input id="QuantidadeIntegrantes" class="uk-input uk-form-width-medium uk-form-small"
+                    <input id="QuantidadeIntegrantes" required class="uk-input uk-form-width-medium uk-form-small"
                         value="@(Model?.QuantidadeIntegrantes <= 0 ? "" : Model.QuantidadeIntegrantes.ToString())"
-                        type="text" placeholder="Quantidade de integrantes" aria-label="Small">
-                    <select id="DivisaoId" class="uk-select uk-form-width-medium uk-form-small" aria-label="Select">
+                        type="number" placeholder="Quantidade de integrantes" aria-label="Small">
+                    <select id="DivisaoId" required class="uk-select uk-form-width-medium uk-form-small"
+                        aria-label="Select">
                         <option value="@Model?.Divisao?.DivisaoId">@(Model?.Divisao?.Nome ?? "Divisão atual")</option>
                         @if (ViewBag.Divisoes != null)
                         {
@@ -58,6 +59,25 @@
         var quantidadeIntegrantes = $('#QuantidadeIntegrantes').val();
         var divisaoId = $('#DivisaoId').val();
 
+        if (quantidadeIntegrantes <= 0 || quantidadeIntegrantes === "") {
+            UIkit.notification({
+                message: 'Adicione ao menos 1 integrante!',
+                status: 'danger',
+                pos: 'top-center',
+                timeout: 1500
+            });
+            return;
+        }
+        else if (divisaoId === "Divisão atual") {
+            UIkit.notification({
+                message: 'Selecione uma divisão!',
+                status: 'danger',
+                pos: 'top-center',
+                timeout: 1500
+            });
+            return;
+        }
+
         const obj = {
             Nome: nome,
             QuantidadeIntegrantes: quantidadeIntegrantes,
@@ -71,7 +91,12 @@
                 window.location.href = '@Url.Action("Index", "Home")';
             })
             .fail(function () {
-                alert('Erro ao cadastrar time!');
+                UIkit.notification({
+                    message: 'Erro ao cadastrar time!',
+                    status: 'danger',
+                    pos: 'top-center',
+                    timeout: 1500
+                });
             });
     }
     function atualizar() {

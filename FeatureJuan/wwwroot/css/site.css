@@ -44,12 +44,18 @@
 
 .botao-excluir {
   text-decoration: none !important;
-  color: inherit !important;
-  background-color: inherit !important;
+  background-color: red;
+  border-radius: 6px;
+  padding: 5px;
+  cursor: pointer;
+  color: white !important;
 }
 
 .botao-editar {
   text-decoration: none !important;
-  color: inherit !important;
-  background-color: inherit !important;
+  background-color: #113977;
+  border-radius: 6px;
+  padding: 5px;
+  cursor: pointer;
+  color: white !important;
 }
